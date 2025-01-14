@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentDialog
+    x:Class="demo1.DialogEditMessage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:demo1"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    d:DataContext="{d:DesignInstance Type=local:ViewModel_DialogEditMessage}"
+    mc:Ignorable="d"
+    Title="Edit Message"
+    
+    PrimaryButtonText="确认更改"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    
+    SecondaryButtonText="取消编辑"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <ContentDialog.Resources>
+        <Style TargetType="local:DialogEditMessage" BasedOn="{StaticResource DefaultContentDialogStyle}"/>
+    </ContentDialog.Resources>
+
+    <Grid>
+        <TextBox 
+            Width="400"
+            MinHeight="100"
+            MaxHeight="300"
+            ScrollViewer.VerticalScrollBarVisibility="Auto"
+            FontFamily="Consolas" FontSize="12"
+            
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            
+            Text="{x:Bind viewModel.Content, Mode=TwoWay , 
+                            UpdateSourceTrigger=PropertyChanged}" 
+                 Margin="0,0,0,10"/>
+    </Grid>
+</ContentDialog>
